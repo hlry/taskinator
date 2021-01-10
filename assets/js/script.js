@@ -44,8 +44,6 @@ var taskFormHandler = function (event) {
 };
 
 var createTaskEl = function (taskDataObj) {
-  console.log(taskDataObj);
-  console.log(taskDataObj.status);
   // create list item
   var listItemEl = document.createElement("li");
   listItemEl.className = "task-item";
@@ -75,6 +73,9 @@ var createTaskEl = function (taskDataObj) {
   taskDataObj.id = taskIdCounter;
   // add object to tasks array - adds content to end of array
   tasks.push(taskDataObj);
+
+  // save to localStorage
+  saveTasks()
 
   // increase task counter for next unique id
   taskIdCounter++;
@@ -167,6 +168,9 @@ var deleteTask = function (taskId) {
     if (tasks[i].id !== parseInt(taskId)) {
       updatedTaskArr.push(tasks[i]);
     }
+
+    // save tasks to localStorage
+    saveTasks()
   }
 
   // reassign tasks array to be the same as updatedTaskArr
@@ -189,6 +193,9 @@ var completeEditTask = function (taskName, taskType, taskId) {
     }
   };
 
+  // save tasks to localStorage
+  saveTasks()
+
   // remove data attribute from form
   formEl.removeAttribute("data-task-id");
   // update formEl button to go back to saying "Add Task" instead of "Edit Task"
@@ -197,7 +204,6 @@ var completeEditTask = function (taskName, taskType, taskId) {
 };
 
 var taskStatusChangeHandler = function (event) {
-  console.log(event.target.value);
   // find task list item based on event.target's data-task-id attribute
   var taskId = event.target.getAttribute("data-task-id");
 
@@ -221,7 +227,9 @@ var taskStatusChangeHandler = function (event) {
       tasks[i].status = statusValue;
     }
   }
-  console.log(tasks);
+
+  // save tasks to localStorage
+  saveTasks()
 };
 
 var dragTaskHandler = function (event) {
@@ -286,8 +294,8 @@ var dropTaskHandler = function (event) {
       tasks[i].status = statusSelectEl.value.toLowerCase();
     }
   }
-
-  console.log(tasks);
+  // save tasks to localStorage
+  saveTasks()
 };
 
 var dragLeaveHandler = function (event) {
@@ -299,6 +307,10 @@ var dragLeaveHandler = function (event) {
   //   event.preventDefault();
   //   taskListEl.setAttribute("style", "background: rgba(68, 233, 255, 0.7); border-style: dashed;");
   // }
+}
+
+var saveTasks = function () {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 // Create a new task
