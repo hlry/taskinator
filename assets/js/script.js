@@ -326,35 +326,6 @@ var loadTasks = function () {
     // pass each task object into the `createTaskEl()` function
     createTaskEl(savedTasks[i]);
   }
-  // for (i = 0; i < tasks.length; i++) {
-  //   task[i].setAttribute(id) = taskIDCounter;
-  //   console.log(tasks[i]);
-  //   var listItemEl = document.createElement("li");
-  //   listItemEl.className = task - item;
-  //   listItemEl.setAttribute("data-task-id") = task[i].id;
-  //   listItemEl.setAttribute(draggable) = true;
-  //   var taskInfoEl = document.createElement("div");
-  //   taskInfoEl.className = task - taskInfoEl;
-  //   taskInfoEl.innerHTML = "<h3 class='task-name'>" + tasks[i].name + "</h3><span class='task-type'>" + tasks[i].type + "</span>";
-  //   tasksInfoEl.appendChild(listItemEl);
-
-  //   var taskActionsEl = createTaskActions(tasks[i].id);
-  //   taskActionsEl.appendChild(listItemEl);
-  //   console.log(listItemEl);
-
-  //   if (tasks[i].statusValue === "to do") {
-  //     listItemEl.querySelector("select[name='status-change']").selectedIndex = 0;
-  //     listItemEl.appendChild(tasksToDoEl);
-  //   } else if (tasks[i].statusValue === "in progress") {
-  //     listItemEl.querySelector("select[name='status-change']").selectedIndex = 1;
-  //     listItemEl.appendChild(tasksInProgressEl);
-  //   } else if (tasks[i].statusValue === "completed") {
-  //     listItemEl.querySelector("select[name='status-change']").selectedIndex = 2;
-  //     listItemEl.appendChild(tasksCompletedEl);
-  //     taskIdCounter = taskIdCounter++
-  //   }
-  //   console.log(listItemEl)
-  // }
 }
 
 loadTasks();
