@@ -227,7 +227,6 @@ var taskStatusChangeHandler = function (event) {
       tasks[i].status = statusValue;
     }
   }
-
   // save tasks to localStorage
   saveTasks()
 };
@@ -237,10 +236,6 @@ var dragTaskHandler = function (event) {
     var taskId = event.target.getAttribute("data-task-id");
     event.dataTransfer.setData("text/plain", taskId);
   }
-  // var taskId = event.target.getAttribute("data-task-id");
-  // event.dataTransfer.setData("text/plain", taskId);
-  // var getId = event.dataTransfer.getData("text/plain");
-  // console.log("getId:", getId, typeof getId);
 }
 
 // defines the drop zone area
@@ -344,4 +339,3 @@ pageContentEl.addEventListener("dragstart", dragTaskHandler);
 pageContentEl.addEventListener("dragover", dropZoneDragHandler);
 pageContentEl.addEventListener("drop", dropTaskHandler);
 pageContentEl.addEventListener("dragleave", dragLeaveHandler);
-
